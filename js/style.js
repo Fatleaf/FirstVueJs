@@ -206,3 +206,46 @@ const test4_5 = Vue.createApp({
         }
     }
 }).mount('#test4_5');
+//使用vue來做selecteds
+
+const test4_6 = Vue.createApp({
+    data() {
+        return {
+            blurtext: '',
+            number1: '',
+            number2: ''
+        }
+    },
+    computed: {
+        sum() {
+            return this.number1 + this.number2;
+        }
+    }
+}).mount('#test4_6');
+//在v-model後掛上.lazy會使文字移動出input後才做變更
+//掛上.number後可做運算
+//掛上.trim可修飾實體狀態錢的空白字元
+
+// 模板綁定 - v-text / v-html / v-once / v-pre
+const test4_7 = Vue.createApp({
+    data() {
+        return {
+            message: '這是替換的文字',
+            vhtml: '<h2>這文字是不是很大呢?</h2>'
+        }
+    }
+}).mount('#test4_7');
+//v-text放在標籤，並更換所有內容
+//v-html就類似innerhtml....
+//v-once在載入時執行過一次就不會再更新
+//v-pre不會解析板模內容 ps:用法令人匪夷所思
+
+// 樣式CSS綁定
+const test4_8 = Vue.createApp({
+    data() {
+        return {
+            message: ''
+        }
+    }
+}).mount('#test4_8');
+//v-bind:class.....當訊息長度超過多少時，使用warn樣式

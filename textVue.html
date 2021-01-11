@@ -75,7 +75,7 @@
     </div>
 
     <div id="test4_1">
-        <button v-bind:disable="isBtndisablo">這是按鈕</button>
+        <button v-bind:disable="isBtndisable">這是按鈕</button>
     </div>
 
     <div id="test4_2">
@@ -120,7 +120,36 @@
             <option value="chocolate">goodgoodeat</option>
         </select>
 
-        <p>你選了誰{{seleteds}}</p>
+        <p>你選了{{seleteds}}</p>
+    </div>
+
+    <div id="test4_6">
+        <input type="text" v-model.lazy="blurtext" placeholder="請在這裡輸入" id="blur_affactive">
+        <br>    
+        <label for="blur_affactive">你輸入的是{{blurtext}}</label>
+        <p>
+        <input v-model.number="number1"> + <input v-model.number="number2"> = {{sum}}
+        </p>
+    </div>
+    
+    <!-- 模板綁定  - v-text / v-html / v-once / v-pre -->
+    <div id="test4_7">
+        <input type="text" v-model="message">
+
+        <div v-text="message"></div><br>
+        <div>{{message}}這是ABC</div><br>
+        <div v-once>{{message}}</div>
+        <div v-pre>{{message}}</div>
+
+        <div v-html="vhtml"></div>
+        <div>{{vhtml}}</div>
+    </div>
+
+    <!-- 樣式綁定 -->
+    <div id="test4_8">
+        <p>
+            <input type="text" v-model.trim="message" v-bind:class="{'warn' : message.length > 10}">
+        </p>
     </div>
 
     <!-- Vue 3.x -->
