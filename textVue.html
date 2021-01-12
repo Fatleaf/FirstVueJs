@@ -10,7 +10,7 @@
 <body>
     
     <!-- 1-1 -->
-    <div id="app">
+    <div id="app" class="box">
         {{price}}
         <br>
         <!-- %{price}% 如果後端也用到{{}}則可以用%{}%替代-->
@@ -24,19 +24,19 @@
 
     <!-- 1-2 -->
 
-    <div id="vm1">
+    <div id="vm1" class="box">
         Vm1 : <input type="text" v-model="name2">
     </div>
 
-    <div id="vm2">
+    <div id="vm2" class="box">
         Vm2 : <input type="text" v-model="name2">
     </div>
 
-    <div id="app2"></div>
+    <div id="app2" class="box"></div>
 
     <!-- 1-3 -->
 
-    <div id="app3">
+    <div id="app3" class="box">
        <p>{{subtotalMethods()}}</p> 
        <p>{{subtotalMethods()}}</p> 
        <p>{{subtotalMethods()}}</p> 
@@ -48,19 +48,19 @@
 
     <!-- 單位換算 -->
 
-    <div id="goldChange">
+    <div id="goldChange" class="box">
         <p>1g 黃金 = 1711台幣</p>
         <div>黃金<input type="text" v-model="gram" v-on:input="gramTotwd">g</div>
         <div>台幣<input type="text" v-model="twd" v-on:input="twdTogram">元</div>
     </div>
 
-    <div id="temperature">
+    <div id="temperature" class="box">
         <p>攝氏0 <sup>o</sup>C = 華氏32 <sup>o</sup>F</p>
         <div>攝氏<input type="text" v-model="celsius" v-on:input="c2f"></div>
         <div>華氏<input type="text" v-model="fahrenheit" v-on:input="f2c"></div>
     </div>
 
-    <div id="dollarChange">
+    <div id="dollarChange" class="box">
         <p>1 台幣 = 3.71日幣,0.04美元,0.56埃及鎊</p>
         <div>台幣<input type="text" v-model="twd">元</div>
         <div>美金<input type="text" v-model="usa">元</div>
@@ -70,15 +70,15 @@
 
     <!-- 1-4 -->
 
-    <div id="test4">
+    <div id="test4" class="box">
         <p v-bind:id="takeID">{{takeID}}</p>
     </div>
 
-    <div id="test4_1">
+    <div id="test4_1" class="box">
         <button v-bind:disable="isBtndisable">這是按鈕</button>
     </div>
 
-    <div id="test4_2">
+    <div id="test4_2" class="box">
         <br>
         <input type="text" v-model="message" placeholder="輸入地方在這">
         <p>你輸入的內容為: {{message}}</p>
@@ -87,7 +87,7 @@
         <p>這是你在textarea打的內容: {{message2}}</p>
     </div>
 
-    <div id="test4_3">
+    <div id="test4_3" class="box">
         <input type="radio" v-model="check_box" value="1" id="one">
         <label for="one">one</label>
         <input type="radio" v-model="check_box" value="2" id="two">
@@ -95,7 +95,7 @@
         <p>你選到{{check_box}}</p>
     </div>
 
-    <div id="test4_4">
+    <div id="test4_4" class="box">
         <input type="checkbox" id="apple" value="apple" v-model="check_fruits">
         <label for="apple">apple</label>
         <input type="checkbox" id="banana" value="banana" v-model="check_fruits">
@@ -111,7 +111,7 @@
 
     </div>
 
-    <div id="test4_5">
+    <div id="test4_5" class="box">
         <select v-model="seleteds" id="">
             <option disabled value="">請選擇</option>
             <option value="apple">apple</option>
@@ -123,7 +123,7 @@
         <p>你選了{{seleteds}}</p>
     </div>
 
-    <div id="test4_6">
+    <div id="test4_6" class="box">
         <input type="text" v-model.lazy="blurtext" placeholder="請在這裡輸入" id="blur_affactive">
         <br>    
         <label for="blur_affactive">你輸入的是{{blurtext}}</label>
@@ -133,7 +133,7 @@
     </div>
     
     <!-- 模板綁定  - v-text / v-html / v-once / v-pre -->
-    <div id="test4_7">
+    <div id="test4_7" class="box">
         <input type="text" v-model="message">
 
         <div v-text="message"></div><br>
@@ -146,10 +146,14 @@
     </div>
 
     <!-- 樣式綁定 -->
-    <div id="test4_8">
+    <div id="test4_8" class="box">
         <p>
             <input type="text" v-model.trim="message" v-bind:class="{'warn' : message.length > 10}">
         </p>
+    </div>
+
+    <div id="test4_9" class="box">
+        <p>請輸入:<input type="text" v-model="message" placeholder="請勿小於3個字" v-bind:style="specialStyle"></p>
     </div>
 
     <!-- Vue 3.x -->

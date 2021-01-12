@@ -249,3 +249,24 @@ const test4_8 = Vue.createApp({
     }
 }).mount('#test4_8');
 //v-bind:class.....當訊息長度超過多少時，使用warn樣式
+
+const test4_9 = Vue.createApp({
+    data() {
+        return {
+            message: ''
+        }
+    },
+    computed: {
+        textvalue() {
+            return this.message.length >= 3;
+        },
+        specialStyle() {
+            return {
+                'border': this.textvalue ? '' : '2px red solid',
+                'color': this.textvalue ? '' : 'red'
+            };
+        }
+    }
+}).mount('#test4_9');
+//條件判斷textvalue，回傳樣式specialStyle
+//三元運算子>> A?B:C 如果A為真則B，否則C 

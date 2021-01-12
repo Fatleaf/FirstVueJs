@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1-5 事件處理</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- 1 -->
+    <div id="test01" class="box">
+        <p>計數:{{count}}</p>
+        <button v-on:click="count++">點我+1</button>
+
+        <p>計數2:{{count2}}</p>
+        <button v-on:click="plus">點我+2</button>
+
+        <p>計數3:{{count3}} {{num}}</p>
+        <p>請問你要一次加多少<input type="text" v-model.number="num"></p>
+        <button v-on:click="plus2">點我+{{num}}</button>
+        <p><button @click="clearNumber">點我清除計數3</button></p>
+        
+    </div>
+    
+    <!-- Vue 3.x -->
+    <script src="https://unpkg.com/vue@next"></script>
+
+    <script src="js/1-5 事件處理.js"></script>
+</body>
+</html>
