@@ -18,8 +18,67 @@
         <p>計數3:{{count3}} {{num}}</p>
         <p>請問你要一次加多少<input type="text" v-model.number="num"></p>
         <button v-on:click="plus2">點我+{{num}}</button>
-        <p><button @click="clearNumber">點我清除計數3</button></p>
+        <p><button @click="clearNumber">點我清除計數3</button></p>  
         
+    </div>
+
+    <!-- 2 v-on、event -->
+    <div id="test02" class="box">
+        <p>計數:{{count}}</p>
+        <p><input type="text" v-model.number="num"></p>        
+        <button @click="add(num, $event)">點我加加</button>
+    </div>
+
+    <!-- 3 -->
+    <!-- stop,prevent,prevent,self -->
+    <div id="test03" class="box">
+        <span>沒有.stop</span>
+        <div class="outer" @click="alert('Outer')">
+            <span>外圈</span>
+            <div class="inner" @click="alert('Inner')">內圈</div>
+        </div>
+        <hr>
+        <span>有.stop</span>
+        <div class="outer" @click="alert('Outer')">
+            <span>外圈</span>
+            <div class="inner" @click.stop="alert('Inner')">內圈</div>
+        </div>
+        <hr>
+        <span>prevent，停止預設動作</span>
+        <div class="outer" @click="alert('Outer')">
+            <span>外圈</span>
+            <div class="inner" @click.stop="alert('Inner')">
+                <span>
+                    內圈<a href="#test01" @click.stop.prevent="alert('連接至test01')">點我超連結</a>
+                </span>
+            </div>
+        </div>
+        <hr>
+        <span>
+            <h3>.capture</h3>
+            <p>
+                Event Bubbling:由元件向外傳遞 ex:div>>body>>html <br>
+                Event Capturing:由外向內傳遞 ex:html>>body>>div
+            </p>
+        </span>
+        <div class="outer" @click.capture="alert('Outer')">
+            <span>外圈</span>
+            <div class="inner" @click="alert('Inner')">內圈</div>
+        </div>
+
+    </div>
+    <!-- 1-5 mask研究研究... -->
+
+    <!-- 4 -->
+    <div id="test04" class="box">
+        <p>你按下的鍵是: {{keypress}}</p>
+        <input type="text" @keyup="press">
+
+        <div class="box">
+            <div v-for="message in messages">{{ message }}</div> 
+        </div>
+        <input type="text" placeholder="按下space後印到上方" v-model.trim="msg" @keydown.space="addMessage">
+        <!-- v-for 是vue的FOR迴圈，apple in apples,apples為陣列而apple為單個 -->
     </div>
     
     <!-- Vue 3.x -->
