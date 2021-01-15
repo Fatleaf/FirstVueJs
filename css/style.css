@@ -45,4 +45,52 @@
   margin: 5px;
   color: wheat;
 }
+
+#pagination {
+  display: block;
+  overflow: hidden;
+}
+
+#pagination a {
+  text-decoration: none;
+}
+
+#pagination .pagination {
+  display: block;
+  overflow: hidden;
+}
+
+#pagination .page_item {
+  display: block;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  cursor: pointer;
+  border: 1px solid green;
+  float: left;
+  margin: 0;
+  margin-right: -1px;
+}
+
+#pagination .page_item:hover {
+  background-color: rgba(0, 100, 0, 0.322);
+}
+
+.page_item {
+  display: block;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  cursor: pointer;
+  border: 1px solid green;
+  float: left;
+  margin: 0;
+  margin-right: -1px;
+}
+
+.page_item:hover {
+  background-color: rgba(0, 100, 0, 0.322);
+}
 /*# sourceMappingURL=style.css.map */

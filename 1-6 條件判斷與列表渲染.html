@@ -55,6 +55,7 @@
         <!-- v-if需使用template -->
 
         <!-- v-show -->
+        <hr>
         <div v-show="check_box === '1' ">
             <h3>這是內容A</h3>
             <div class="mini_box"></div>
@@ -68,7 +69,58 @@
             <p>這也是一個正方形</p>
             <input type="text">
         </div>
+        <hr>
         <!-- show需使用div -->
+
+        <!-- v-for -->
+        <h3>for迴圈</h3>
+        
+        <p>陣列</p>
+        <ul>
+            <li v-for="fruit in fruits">{{ fruit }}</li>
+        </ul>
+        <ul>
+            <li v-for="(item, index) in fruits">{{ index + 1 }} - {{ item }}</li>
+        </ul>
+        
+        <p>物件</p>
+        <ul>
+            <li v-for="(key, profile) in profiles">{{ key }} : {{ profile }}</li>
+        </ul>
+
+        <p>迴圈範例</p>
+        <ul id="pagination">
+            <li class="page_item"><a @click.prevent href="#">&lt;</a></li>
+            <li class="page_item" v-for="page in 8"><a href="#">{{ page }}</a></li>
+            <li class="page_item"><a @click.prevent href="#">&gt;</a></li>
+        </ul>
+
+        <p>排序</p>
+        <ul style="display: block; overflow: hidden;">
+            <li class="page_item" v-for="num in sortNumbers">{{ num }}</li>
+        </ul>
+        <ul style="display: block; overflow: hidden;">
+            <li class="page_item" v-for="num in sortB2S">{{ num }}</li>
+        </ul>
+        <hr>
+
+        <!-- Todo -->
+        <h3>Todo</h3>
+        <ul>
+            <li v-for="(thing, index) in todoList" :key="thing.id">
+                <label><input type="checkbox" v-model="thing.isDone">{{ index + 1 }} - {{ thing.title }}</label>
+            </li>
+        </ul>
+
+        <!-- Done -->
+        <h3>Done</h3>
+        <ul>
+            <li v-for="(thing, index) in doneList" :key="thing.id">
+                <label><input type="checkbox" v-model="thing.isDone">{{ index + 1 }} - {{ thing.title }}</label>
+            </li>
+        </ul>
+        <!-- v-for裡面可以放函式!! -->
+        
     </div>
 
 
