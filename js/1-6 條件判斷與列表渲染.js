@@ -47,7 +47,7 @@ const test02 =Vue.createApp({
         }
     },
     computed: {
-        sortNumbers() {
+        sortS2B() {
             return [...this.numbers].sort((a, b) => b - a);
         },
         sortB2S() {
