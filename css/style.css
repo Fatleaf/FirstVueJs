@@ -29,4 +29,20 @@
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
 }
+
+.mini_box {
+  width: 100px;
+  height: 100px;
+  background-color: brown;
+  margin: 5px;
+  color: wheat;
+}
+
+.mini_box2 {
+  width: 100px;
+  height: 100px;
+  background-color: cornflowerblue;
+  margin: 5px;
+  color: wheat;
+}
 /*# sourceMappingURL=style.css.map */

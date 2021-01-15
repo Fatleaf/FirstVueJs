@@ -74,11 +74,22 @@
         <p>你按下的鍵是: {{keypress}}</p>
         <input type="text" @keyup="press">
 
+        <hr>
+        <span>v-for,@keydown.space</span>
         <div class="box">
             <div v-for="message in messages">{{ message }}</div> 
         </div>
         <input type="text" placeholder="按下space後印到上方" v-model.trim="msg" @keydown.space="addMessage">
         <!-- v-for 是vue的FOR迴圈，apple in apples,apples為陣列而apple為單個 -->
+        
+        <hr>
+        <span>加上exact為更精確的行為</span>
+        <div class="box">
+            <div v-for="message2 in messages2">{{ message2 }}</div> 
+        </div>
+        <input type="text" placeholder="按下space後印到上方" v-model.trim="msg2" @keydown.space.exact="addMessage2">
+ 
+
     </div>
     
     <!-- Vue 3.x -->

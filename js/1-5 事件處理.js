@@ -58,7 +58,9 @@ const test04 = Vue.createApp({
         return {
             keypress: '',
             messages: [],
-            msg: ''
+            messages2: [],
+            msg: '',
+            msg2: ''
         }
     },
     methods: {
@@ -71,6 +73,10 @@ const test04 = Vue.createApp({
         addMessage(){
             this.messages.push(this.msg);
             this.msg = '';
+        },
+        addMessage2(){
+            this.messages2.push(this.msg2);
+            this.msg2 = '';
         }
     }
 }).mount('#test04');

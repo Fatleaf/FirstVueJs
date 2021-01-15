@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1-6</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- v-show與v-if -->
+    <div id="test01" class="box">
+        <p><input type="checkbox" v-model="isShow">開箱否:{{isShow}}</p>
+        <div>
+            <div v-if="isShow" class="mini_box">v-if</div>
+            <div v-show="isShow" class="mini_box">v-show</div>
+        </div>
+
+        <p>計數:{{count}}</p>
+        <button @click="count++">加加</button>
+        <button @click="count = 0">清除</button>
+
+        <div v-if="count === 0 " class="mini_box">{{count}}</div>
+        <div v-else-if="count < 6 " class="mini_box" style="background-color: aqua;">{{count}}</div>
+        <div v-else class="mini_box" style="background-color: black;">{{count}}</div>
+
+
+    </div>
+    <!-- show只是隱藏物件display:none,if則是把整個div消除 -->
+
+    <div id="test02" class="box">
+        <p>
+            請選擇要顯示的內容: 
+            <input type="radio" v-model="check_box" id="one" value="1">
+            <label for="one">內容A</label>
+            <input type="radio" v-model="check_box" id="two" value="2">
+            <label for="two">內容B</label>
+
+        </p>
+
+        <!-- v-if -->
+        <template v-if="check_box === '1' ">
+            <h3>這是內容A</h3>
+            <div class="mini_box"></div>
+            <p>這是一個正方形</p>
+            <input type="text" v-model="contentA">
+        </template>
+
+        <template v-else>
+            <h3>這是內容B</h3>
+            <div class="mini_box2"></div>
+            <p>這也是一個正方形</p>
+            <input type="text" v-model="contentB">
+        </template>
+        <!-- v-if需使用template -->
+
+        <!-- v-show -->
+        <div v-show="check_box === '1' ">
+            <h3>這是內容A</h3>
+            <div class="mini_box"></div>
+            <p>這是一個正方形</p>
+            <input type="text">
+        </div>
+
+        <div v-show="check_box === '2' ">
+            <h3>這是內容B</h3>
+            <div class="mini_box2"></div>
+            <p>這也是一個正方形</p>
+            <input type="text">
+        </div>
+        <!-- show需使用div -->
+    </div>
+
+
+    <!-- Vue 3.x -->
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="js/1-6 條件判斷與列表渲染.js"></script>
+</body>
+</html>
