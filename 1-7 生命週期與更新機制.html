@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1-7 生命週期與更新機制</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    
+    <div id="test01" class="box">
+        <p>訊息內容: {{ messages }}</p>
+        <p>scrollHight: {{ scrollHeight }}</p>
+        <p>Dom實際的scrollHight: {{ realScrollHeight }}</p>
+    
+        <div class="box messages">
+            <div v-for="message in messages">{{ message }}</div>
+        </div>
+    
+        <input type="text" placeholder="按下ctrl後更新" v-model.trim="msg" @keydown.ctrl="addMessage">    
+    </div>
+
+    
+
+    <!-- Vue 3.x -->
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="js/1-7 生命週期與更新機制.js"></script>
+</body>
+</html>

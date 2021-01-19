@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <div id="test01" class="box">
+        <p>test01</p>
+        <hr>
+        <p>以下是自定義元件</p>
+        <small-comp></small-comp>
+        <medium-comp></medium-comp>
+
+    </div>
+
+    <div id="test02" class="box">
+        <p>test02</p>
+        <hr>
+        <p>另外的dom</p>
+        <small-comp></small-comp>
+    </div>
+
+    <div id="test03" class="box">
+        <p>test03</p>
+        <hr>
+        <test03-comp></test03-comp>
+        <test03-comp></test03-comp>
+        <test03-comp></test03-comp>
+    </div>
+
+    <div id="test04" class="box">
+        <p>test04</p>
+        <hr>
+        <test04-comp></test04-comp>
+        <test04-comp></test04-comp>
+        <test04-comp></test04-comp>
+    </div>
+
+    <div id="test05" class="box">
+        <p>test05</p>
+        <hr>
+        <p>{{ msg }}</p>
+        <test05-comp :inside-msg="msg"></test05-comp>
+        <test05-comp :inside-msg02="msg"></test05-comp>
+        <test05-comp :inside-msg03="msg"></test05-comp>
+    </div>
+
+    <div id="test06" class="box">
+        <p>test06</p>
+        <hr>
+        <ul v-for="book in books">
+            <li>{{ book.name }}</li>
+            <li>{{ book.author }}</li>
+            <li>{{ book.price }}</li>
+        </ul>
+        <!-- <div class="box">
+            <div>書名: <input type="text" v-model="bookinfo.name"></div>
+            <div>作者: <input type="text" v-model="bookinfo.author"></div>
+            <div>價格: <input type="text" v-model="bookinfo.price"></div>
+        </div> -->
+        <inside-book v-for="book in books" :key="book.name" :book-info="book" />
+        <!-- 使用子元件的標籤記得要用inside-book,標籤無法判別大小寫 -->
+    </div>
+
+    <div id="test07" class="box">
+        <p>test07</p>
+        <hr>
+        <ul v-for="item in items">
+            <li>{{ item.name }}</li>
+            <li>{{ item.ion }}</li>
+            <li>{{ item.price }}</li>
+        </ul>
+        <super-item v-for="item in items" :key="item.name" :item-info="item"></super-item>
+        <!-- <super-item v-for="item in items" :key="item.name" :item-info="item" /> -->
+    </div>
+
+    <!-- Vue 3.x -->
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="js/2-1 元件系統特性.js"></script>
+</body>
+</html>

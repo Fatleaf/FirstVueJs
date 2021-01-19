@@ -36,14 +36,20 @@ const test02 =Vue.createApp({
                 {
                     id: 'task03',
                     title: '看山',
-                    isDone: false
+                    isDone: true
                 },
                 {
                     id: 'task04',
                     title: '看小',
                     isDone: false
+                },
+                {
+                    id: 'task05',
+                    title: '大晴天',
+                    isDone: false
                 }
-            ]
+            ],
+            text: '要改的內容'
         }
     },
     computed: {
@@ -58,6 +64,11 @@ const test02 =Vue.createApp({
         },
         doneList() {
             return this.things.filter( d => d.isDone )
+        }
+    },
+    methods: {
+        change() {
+            return this.fruits[1] = this.text;
         }
     }
 }).mount('#test02');

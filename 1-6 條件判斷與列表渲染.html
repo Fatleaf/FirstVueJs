@@ -120,6 +120,12 @@
             </li>
         </ul>
         <!-- v-for裡面可以放函式!! -->
+
+        <p>水果: {{ fruits }}</p>
+        <p>
+            按下按鈕時更新fruits[1]: <input v-model="text">
+        </p>
+        <button @click="change">更新</button>
         
     </div>
 
