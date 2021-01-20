@@ -155,6 +155,9 @@ test06.component('insideBook',{
 
 test06.mount('#test06');
 
+//test06的子元件的變更會直接影響到父元件，這是bug!!
+
+
 const test07 = Vue.createApp({
     data() {
         return {
@@ -187,16 +190,139 @@ const test07 = Vue.createApp({
 test07.component('superItem',{
     template: `
     <div class="box">
-        <div>武器: <input type="text" v-model="itemInfo.name"></div>
-        <div>成分: <input type="text" v-model="itemInfo.ion"></div>
-        <div>價格: <input type="text" v-model="itemInfo.price"></div>
+        <div>武器: <input type="text" v-model="name"></div>
+        <div>成分: <input type="text" v-model="ion"></div>
+        <div>價格: <input type="text" v-model="price"></div>
     </div>
     `,
-    props: {
-        'itemInfo': {
-            type: Object
+    props: ['name', 'ion', 'price']
+    
+});
+
+test07.mount('#test07');
+
+const test08 = Vue.createApp({
+    data() {
+        return {
+            items: [
+                {
+                    name: '鐵斧',
+                    ion: 'iron',
+                    price: '200'
+                },
+                {
+                    name: '水斧',
+                    ion: 'water',
+                    price: '300'
+                },
+                {
+                    name: '火斧',
+                    ion: 'fire',
+                    price: '500'
+                },
+                {
+                    name: '毒斧',
+                    ion: 'posion',
+                    price: '100'
+                }
+            ]
         }
     }
 });
 
-test07.mount('#test07');
+test08.component('thoseItems', {
+    props: ['name', 'ion', 'price'],
+    data() {
+        return {
+            itemName: this.name,
+            itemIon: this.ion,
+            itemPrice: this.price
+        }
+    },
+    template: `
+    <div class="box">
+        <div>武器: <input type="text" v-model="itemName"></div>
+        <div>成分: <input type="text" v-model="itemIon"></div>
+        <div>價格: <input type="text" v-model="itemPrice"></div>
+    </div>
+    `
+});
+
+test08.mount('#test08');
+
+const longData = {
+    name: '犬科',
+    childData: [{
+        name: '哈士奇',
+        childData: [{
+            name: '活潑好動',
+            url: 'https://img.alicdn.com/imgextra/i4/2850290282/TB2IuWTjiCYBuNkSnaVXXcMsVXa_!!2850290282-0-beehive-scenes.jpg_2200x2200Q50s50.jpg'
+        }]
+    },
+    {
+        name: '材犬',
+        childData: [{
+            name: '陽光微笑',
+            url: 'https://img.ltn.com.tw/Upload/playing/page/2019/09/14/190914-21024-01-WvNZA.jpg'
+        }]
+    },
+    {
+        name: '台灣土狗',
+        childData: [{
+            name: '食物是老大',
+            url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Black_8_Year_Taiwan_Dog.jpg/1200px-Black_8_Year_Taiwan_Dog.jpg'
+        },
+        {
+            name: '體重',
+            childData:[{
+                name: '18kg'
+            }]
+        }]
+    }]
+};
+
+const test09 = Vue.createApp({
+    data() {
+        return {
+            longData
+        }
+    }
+});
+
+test09.component('menu-comp', {
+    name: `menu-comp`,
+    props: {
+        title: String,
+        url: String,
+        child: {
+            type: Array,
+            default: []
+        }
+    },
+    data() {
+        return {
+            isOpen: false
+        }
+    },
+    template:`
+        <ul>
+            <li>
+            <template v-if="child.length > 0">
+                <h2 class="has-child box"
+                :class="{ 'is-open': isOpen }"
+                @click="isOpen = !isOpen">{{ title }}</h2>
+                <menu-comp 
+                v-show="isOpen"
+                v-for="c in child"
+                :title="c.name"
+                :child="c.childData"
+                :url="c.url"
+                />
+            </template>
+            <a :href="url" target="_blank" v-else>{{ title }}</a>
+            </li>
+        </ul>
+    `
+});
+
+test09.mount('#test09');

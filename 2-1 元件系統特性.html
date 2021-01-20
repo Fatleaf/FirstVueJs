@@ -74,9 +74,37 @@
             <li>{{ item.ion }}</li>
             <li>{{ item.price }}</li>
         </ul>
-        <super-item v-for="item in items" :key="item.name" :item-info="item"></super-item>
-        <!-- <super-item v-for="item in items" :key="item.name" :item-info="item" /> -->
+        <!-- <super-item v-for="item in items" :name="item.name" :ion="item.ion" :price="item.price"></super-item> -->
+
+        <super-item v-for="item in items" v-bind="item" />
+
+        <!-- test07的兩種子元件寫法結果是一樣的，v-bind可以直接解析book內容達到跟上述一樣的結果 -->
     </div>
+
+    <div id="test08" class="box">
+        <p>test08</p>
+        <hr>
+        <ul v-for="i in items">
+            <li>{{ i.name }}</li>
+            <li>{{ i.ion }}</li>
+            <li>{{ i.price }}</li>
+        </ul>
+        <those-items v-for="i in items" v-bind="i" />
+        <!-- 此處的v-bind=""對應到v-model裡面的所有的值 -->
+    </div>
+
+    <div id="test09">
+        <menu-comp :title="longData.name" :child="longData.childData"></menu-comp>
+    </div>
+
+    <!-- <ul>
+        <li>
+            <template v-if="child.length > 0">
+                <h2 class="has-child" :class="{'is-open' : isOpen}" @click="isOpen = !isOpen ">{{ title }}</h2>
+                <menu-comp v-show="isOpen" v-for="c in child" :title="c.name" :child="c.childData" :url="c.url" />
+            </template>
+        </li>
+    </ul> -->
 
     <!-- Vue 3.x -->
     <script src="https://unpkg.com/vue@next"></script>

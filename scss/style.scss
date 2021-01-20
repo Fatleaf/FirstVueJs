@@ -105,3 +105,33 @@
     overflow-y: scroll;
     border: 1px solid #ccc;
   }
+
+#test09{
+    display: block;
+    
+    ul > li {
+        display: block;
+        margin-left: 1rem;  
+        margin-bottom: 0.5rem;
+        padding: 8px;
+        background-color: #eee;
+      }
+      
+      h2.has-child {
+        cursor: pointer;
+        
+        &::before {  
+          content: '+ ';
+        }
+      }
+      
+      h2.has-child.is-open::before {
+        content: '- ';
+      }
+      
+      a {
+        color: #333;
+        text-decoration: none;
+        &:hover { color: red; }
+      }
+}
