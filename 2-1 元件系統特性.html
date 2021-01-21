@@ -106,6 +106,45 @@
         </li>
     </ul> -->
 
+    <div id="test10">
+        <input type="text" v-model="msg">
+        <!-- <ul>
+            <li v-for="msg in 3">{{ msg }}</li>
+            <child-msg />
+        </ul>
+        <div>{{ provideMsg }}</div> -->
+        <list-comp></list-comp>
+    </div>
+
+    <div id="test10_1">
+        <input type="text" v-model="message">
+        <!-- <ul>
+            <li v-for="m in 3">
+                {{ m }}
+                <grand-child />
+            </li>
+        </ul> -->
+        <!-- <div>message</div> -->
+        <child-comp></child-comp>
+    </div>
+
+    <!-- Vue Composition API -->
+    <div id="test11">
+        <h3>你總共按了我 {{ sum }} 次~</h3>
+
+        <btn-counter @add-sum="plus"></btn-counter>
+        <btn-counter @add-sum="plus"></btn-counter>
+        <btn-reset></btn-reset>
+    </div>
+
+    <!-- ref -->
+    <div id="test12">
+        <h3>{{ msg }}</h3>
+        <input type="text" ref="mytext">
+        <hello ref="mychild"></hello>
+        <button @click="handle"></button>
+    </div>
+
     <!-- Vue 3.x -->
     <script src="https://unpkg.com/vue@next"></script>
     <script src="js/2-1 元件系統特性.js"></script>

@@ -326,3 +326,162 @@ test09.component('menu-comp', {
 });
 
 test09.mount('#test09');
+
+const test10 = Vue.createApp({
+    data() {
+        return {
+            msg: '你好~'
+        }
+    },
+    provide() {
+        return {
+            heeeeello: this.msg,
+            heeeeello2: Vue.computed(() => this.msg)//子層傳回來的值可與父層連動
+        };
+    }
+});
+
+test10.component('list-comp', {
+    template: `
+    <ul>
+        <li v-for="s in 3">
+        {{ s }}
+        <list-item />
+        </li>
+    </ul>
+    `,
+    components: {
+        'list-item': {
+            inject: ['heeeeello','heeeeello2'],
+            template: `
+            <div>heeeeello: {{ heeeeello }}</div>
+            <div>heeeeello2: {{ heeeeello2.value }}</div>
+            `
+        }
+    }
+});
+
+test10.mount('#test10');
+
+const test10_1 = Vue.createApp({
+    data() {
+        return {
+            message: 'test10練習'
+        }
+    },
+    provide() {
+        return {
+            childMsg: this.message,
+            childMsg2: Vue.computed(() => this.message)//傳出
+        }
+    }
+});
+
+test10_1.component('child-comp', {
+    template: `
+        <ul>
+            <li v-for="m in 5">
+                {{ m }}
+                <grand-child />
+            </li>
+        </ul>
+    `,
+    components: {
+        'grand-child': {
+            inject: ['childMsg', 'childMsg2'],
+            template: `
+            <div>childMsg:{{childMsg}}</div>
+            <div>childMsg2:{{childMsg2.value}}</div>  
+            `
+            //inject 接收
+        }
+    }
+});
+
+test10_1.mount('#test10_1');
+
+// Vue Composition API
+const {
+    ref,
+    watch,
+    createApp
+} = Vue;
+
+const sum = ref(0);
+const plus = () => sum.value++;
+const reset = () => sum.value = 0;
+
+const test11 = createApp({
+    setup() {
+        return {
+            sum,
+            plus
+        };
+    }
+});
+
+test11.component('btn-counter', {
+    template: `<button @click="plus">你按了我{{ count }}次</button>`,
+    setup(props, {
+        emit
+    }) {
+        const count = ref(0);
+        const plus = () =>{
+            count.value++
+            emit('add-sum');
+        };
+        watch(sum, v=> count.value = v === 0 ? 0 : count.value);
+        return {
+            count,
+            plus
+        }
+    }
+});
+
+test11.component('btn-reset', {
+    template: `<button @click="reset">清除</button>`,
+    setup() {
+        return {
+            reset
+        }
+    }
+});
+
+test11.mount('#test11');
+
+
+// ref基本用法
+const test12 = Vue.createApp({
+    data() {
+        return {
+            msg: '父層元件訊息'
+        }
+    },
+    provide() {
+        return {
+            msgff: this.msg
+        }
+    },
+    methods: {
+        handle() {
+            console.log(this.$refs.mychild.msgfc)
+            console.log(this.$refs.mychild.msgff)
+            console.log(this.$refs.mytext.value)
+        }
+    }
+});
+
+test12.component('hello', {
+    template: `
+        <div>父元件訊息從子元件顯示 :{{ msgff }}</div>
+        <div>子元件的訊息:{{ msgfc }}</div>
+    `,
+    data() {
+        return {
+            msgfc: '這是子元件訊息'
+        }
+    },
+    inject: ['msgff']
+});
+
+test12.mount('#test12');
