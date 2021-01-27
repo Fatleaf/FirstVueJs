@@ -307,19 +307,19 @@ test09.component('menu-comp', {
     template:`
         <ul>
             <li>
-            <template v-if="child.length > 0">
-                <h2 class="has-child box"
-                :class="{ 'is-open': isOpen }"
-                @click="isOpen = !isOpen">{{ title }}</h2>
-                <menu-comp 
-                v-show="isOpen"
-                v-for="c in child"
-                :title="c.name"
-                :child="c.childData"
-                :url="c.url"
-                />
-            </template>
-            <a :href="url" target="_blank" v-else>{{ title }}</a>
+                <template v-if="child.length > 0">
+                    <h2 class="has-child box"
+                    :class="{ 'is-open': isOpen }"
+                    @click="isOpen = !isOpen">{{ title }}</h2>
+                    <menu-comp 
+                    v-show="isOpen"
+                    v-for="c in child"
+                    :title="c.name"
+                    :child="c.childData"
+                    :url="c.url"
+                    />
+                </template>
+                <a :href="url" target="_blank" v-else>{{ title }}</a>
             </li>
         </ul>
     `

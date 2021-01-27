@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+<body>
+    <!-- 分頁 -->
+    <div id="test01" class="box">
+        <button v-for="tab in tabs" :key="tab" :class="['tab-button', {active: currentTab === tab}]" @click="currentTab = tab">{{ tab }}</button>
+        <!-- :key="" 辨識依據 -->
+
+        <!-- <tab-shoes v-if="currentTab === 'shoes' "></tab-shoes>
+        <tab-colths v-if="currentTab === 'colths' "></tab-colths>
+        <tab-glass v-if="currentTab === 'glass' "></tab-glass> -->
+
+        <!-- <keep-alive include="tab-shoes,tab-glass">
+            <component :is="tabComponent" @update="notify"></component>
+        </keep-alive> -->
+        <!-- keep-alive 站存保留元件當下的狀態,include決定誰要保留 -->
+
+        <keep-alive>
+            <component :is="tabComponent" @update="notify"></component>
+        </keep-alive>
+
+        <ul>
+            <li v-for="m in msg">{{ m }}</li>
+        </ul>
+    </div>
+    
+    <div id="test02" class="box">
+        <h1>{{ msg }}</h1>
+
+        <hello-comp>
+            {{ msg }}
+        </hello-comp>
+        <hr>
+        <hello-comp></hello-comp>
+    </div>
+
+    <!-- Vue 3.x -->
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="js/2-3 動態元件管理.js"></script>
+</body>
+</html>
